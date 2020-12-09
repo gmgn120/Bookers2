@@ -1,8 +1,13 @@
 <%= flash[:notice] %>
+<h1>Book detail</h1>
 <div class="book-body">
   <p><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-  <p><%= @book.user.name %></p>
-  <p><%= @book.title %></p>
+  <p><%= link_to user_path(@book.user.id) do %>
+  <%= @book.user.name %></p>
+  <% end %>
+  <p><%= link_to book_path(@book.id) do %>
+  <%= @book.title %></p>
+  <% end %>
   <p><%= @book.body %></p>
   <%if @book.user == current_user %>
     <%= link_to "Edit", edit_book_path(@book) %>
