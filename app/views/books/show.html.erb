@@ -1,16 +1,18 @@
 <%= flash[:notice] %>
-<h1>Book detail</h1>
+<h2>Book detail</h2>
+<table class="table">
 <div class="book-body">
-  <p><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-  <p><%= link_to user_path(@book.user.id) do %>
-  <%= @book.user.name %></p>
-  <% end %>
-  <p><%= link_to book_path(@book.id) do %>
-  <%= @book.title %></p>
-  <% end %>
-  <p><%= @book.body %></p>
+  <tbody>
+    <tr>
+      <td><p><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+      <p><%= link_to user_path(@book.user.id) do %><%= @book.user.name %></p><% end %></td>
+      <td><p><%= link_to book_path(@book.id) do %><%= @book.title %></p><% end %></td>
+      <td><p><%= @book.body %></p></td>
   <%if @book.user == current_user %>
-    <%= link_to "Edit", edit_book_path(@book) %>
-    <%= link_to "Destroy", book_path(@book), method: :delete %>
+    <td><%= link_to "Edit", edit_book_path(@book) %></td>
+    <td><%= link_to "Destroy", book_path(@book), method: :delete %></td>
   <% end %>
 </div>
+</tr>
+</tbody>
+</table>
