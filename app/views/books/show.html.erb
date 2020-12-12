@@ -43,7 +43,7 @@
 <div class="book-body">
   <tbody>
     <tr>
-      <td><p><%=link_to user_path(@book.user.id) do %><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><%= @book.user.name %></p><%end%></td>
+      <td><p><%=link_to user_path(@book.user.id) do %><%= attachment_image_tag @book.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br><%= @book.user.name %></p><%end%></td>
       <td><p><%= link_to book_path(@book.id) do %><%= @book.title %></p><% end %></td>
       <td><p><%= @book.body %></p></td>
   <%if @book.user == current_user %>
